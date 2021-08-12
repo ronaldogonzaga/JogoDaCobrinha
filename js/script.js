@@ -24,6 +24,10 @@ function criarCobrinha() {
     }
 }
 
+function drawFood(){
+    context.fillStyle = "red";
+    coontext.fillRect(food.x, food.y, box, box);
+}
 // captura o evento de teclado down
 document.addEventListener('keydown', update);
 
@@ -47,6 +51,7 @@ function iniciaJogo(){
     //passa cada funcao para iniciarem
     criaBG();
     criarCobrinha();
+    drawFood();
     // setar posição X e Y para ponto de partida da cobrinha
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
@@ -57,8 +62,16 @@ function iniciaJogo(){
     // faz o mesmo para o Y
     if (direction == "up") snakeY -= box;
     if (direction == "down") snakeY += box;
+
+    if (snakeX != food.x || snakeY != food.y){
+        snake.pop();
+    } else{
+        food.x = Math.floor(Math.random() * 15 + 1) * box;
+        food.y = Math.floor(Math.random() * 15 + 1) * box;
+    }
     // adicionar a funcao pop que retira o ultimo elemento do array
     snake.pop();
+
     // cabeça da cobrinha
     let newHead = {
         x: snakeX,

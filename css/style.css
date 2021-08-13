@@ -1,3 +1,4 @@
+
 body{
     height: 95vh;
     width: 95vw;
@@ -6,5 +7,5 @@ body{
     justify-content: center;
     align-items: center;
     background-color:white;
-    color: rgb(52, 165, 52);
+    color: rgb(52, 165, 52); 
 }
